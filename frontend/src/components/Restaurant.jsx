@@ -54,7 +54,7 @@ const Restaurant = ({ restaurant }) => {
       </span>
     </div>
 
-    {restaurant.reviewSentiment && (
+    {/* {restaurant.reviewSentiment && ( */}
   <>
 
 
@@ -69,7 +69,7 @@ const Restaurant = ({ restaurant }) => {
 
   
   </>
-)}
+{/* )} */}
 
   </div>
 
@@ -79,17 +79,15 @@ const Restaurant = ({ restaurant }) => {
       <div className="ai-status">
       Review Summary : 
           😊 <strong>
-            {restaurant.reviewSentiment}
+            {restaurant.reviews.name}
           </strong>
        
         </div>
 
         <ul>
-          {(restaurant.reviewSummaryBullets || []).map(
-            (point, index) => (
-              <li key={index}>{point}</li>
-            )
-          )}
+          {restaurant.reviews.slice(0, 5).map((review, index) => (
+        <li key={index}>{review.Comment}</li>
+      ))}
         </ul>
 
         <div className="mentions">
