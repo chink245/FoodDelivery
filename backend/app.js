@@ -14,7 +14,7 @@ const errorMiddleware = require("./middlewares/errors");
 app.use(
   cors({
     // origin: "https://genie-food-app.netlify.app",
-    origin:  ["http://localhost:5173", "http://localhost:5174"],
+    origin:  ["http://localhost:5173", "http://localhost:5174","https://food-delivery-l9fd-g42fkf99n-chinky-raos-projects.vercel.app"],
     credentials: true,
   }),
 );
