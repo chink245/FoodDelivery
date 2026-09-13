@@ -13,10 +13,19 @@ const errorMiddleware = require("./middlewares/errors");
 
 app.use(
   cors({
-    // origin: "https://genie-food-app.netlify.app",
-    origin:  ["http://localhost:5173", "http://localhost:5174","https://food-delivery-l9fd-g42fkf99n-chinky-raos-projects.vercel.app"],
+    origin: function (origin, callback) {
+      if (
+        !origin ||
+        origin.startsWith("http://localhost:") ||
+        origin.endsWith(".vercel.app")
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
-  }),
+  })
 );
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
